@@ -10,26 +10,30 @@ export const createTeam = async (req, res) => {
     const users = await User.find({ _id: { $in: userIds } });
 
     if (!users || users.length === 0) {
-      return res.status(400).json({ message: 'No valid users found for the provided IDs' });
+      return res
+        .status(400)
+        .json({ message: "No valid users found for the provided IDs" });
     }
 
     const uniqueDomains = new Set();
-    users.forEach(user => {
+    users.forEach((user) => {
       uniqueDomains.add(user.domain);
     });
 
     if (uniqueDomains.size !== userIds.length) {
-      return res.status(400).json({ message: 'Users must have unique domains' });
+      return res
+        .status(400)
+        .json({ message: "Users must have unique domains" });
     }
 
     const newTeam = new Team({ name, users: userIds });
     await newTeam.save();
 
-    const populatedTeam = await Team.findById(newTeam._id).populate('users');
+    const populatedTeam = await Team.findById(newTeam._id).populate("users");
 
     res.status(201).json(populatedTeam);
   } catch (err) {
-    console.error('Error creating team:', err.message);
+    console.error("Error creating team:", err.message);
     res.status(400).json({ message: err.message });
   }
 };
@@ -42,5 +46,25 @@ export const getTeamById = async (req, res) => {
     else res.json(team);
   } catch (err) {
     res.status(500).json({ message: err.message });
+  }
+};
+
+export const removeUserFromTeam = async (req,res) => {
+  const {teamId, userId} = req.params;
+  try {
+    const team = await Team.findById(teamId);
+    if(!team){
+      return res.status(404).json({message:"Team not found"})
+    }
+
+    team.users=team.users.filter(member => member.toString() !== userId)
+    await team.save();
+    
+    await (await team.populate('users')).populate();
+
+    res.json(team);
+  } catch (error) {
+    console.error('Error removing user from team',error.message)
+    res.status(500).json({message:error.message})
   }
 };

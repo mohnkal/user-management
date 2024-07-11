@@ -41,7 +41,7 @@ export const getUsers = async (req, res) => {
     availability,
     search,
     page = 1,
-    limit = 10,
+    limit = 20,
   } = req.query;
   const query = {};
 

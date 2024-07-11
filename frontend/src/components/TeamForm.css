@@ -1,0 +1,221 @@
+/* TeamForm.css */
+
+.user-management-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.search-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 10px;
+}
+
+.search-column {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: #fff;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.filter-column {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-item {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.filter-select {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: #fff;
+}
+
+.filter-select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.user-text{
+    display: flex;
+    justify-content: center;
+}
+
+.user-cards-row {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.user-card-column {
+  flex: 0 0 32%;
+  padding: 0;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.user-card-column:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.add-to-team-btn {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.add-to-team-btn:hover {
+  background-color: #4686ff;
+  transform: translateY(-3px);
+}
+
+.pagination-row {
+  margin-top: 1rem;
+}
+
+.pagination-column {
+  text-align: center;
+}
+
+.pagination-list {
+  display: flex;
+  justify-content: center;
+  padding-left: 0;
+  list-style: none;
+}
+
+.pagination-item {
+  list-style: none;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.pagination-link {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #007bff;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.pagination-link:hover {
+  z-index: 2;
+  color: #0056b3;
+  text-decoration: none;
+  background-color: #e9ecef;
+  transform: scale(1.1);
+}
+
+.pagination-item.active .pagination-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #007bff;
+}
+
+.pagination-item.disabled .pagination-link {
+  color: #6c757d;
+  pointer-events: none;
+  cursor: auto;
+}
+
+.selected-users-row {
+  margin-top: 1rem;
+}
+
+.selected-users-column {
+  text-align: center;
+}
+
+.selected-users-list {
+  list-style: none;
+  padding-left: 0;
+  text-align: left;
+}
+
+.selected-user-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  background: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.selected-user-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.create-team-btn {
+  margin-top: 1rem;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.create-team-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+}
+
+@media(max-width:768px){
+    .filter-column{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .search-filter-row{
+        display: flex;
+        flex-direction: column;
+    }
+}
