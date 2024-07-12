@@ -55,18 +55,18 @@ const TeamDetails = () => {
     <div className="container mt-4">
       <div className="row">
         <div className="col-md-12">
-          <h3>Team Details</h3>
-          <p>
+          <h3 className="team-details">Team Details</h3>
+          <p className="team-name">
             <strong>Team Name:</strong> Dev Team
           </p>
-          <h4>Members:</h4>
+          <h4 className="members">Members:</h4>
           <ul className="list-group">
             {currentTeam.users.map((member) => (
               <li key={member._id} className="list-group-item">
                 {/* {member.first_name} {member.last_name} - {member.domain} */}
                 <UserCard user={member} />
                 <button
-                  className="btn btn-danger btn-sm ml-2"
+                  className="btn-remove"
                   onClick={() => handleRemoveTeammate(member._id)}
                 >
                   Remove
