@@ -6,8 +6,12 @@ import "./TeamForm.css";
 import { useSelector, useDispatch } from 'react-redux';
 import { updateTeam } from "../store/slices/UserSlice.js";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../helpers/url.js";
 
 const UserManagement = () => {
+
+// base url
+  const url = BASE_URL;
 
 // Create a dispatcher
   const dispatch = useDispatch();
@@ -34,7 +38,7 @@ const UserManagement = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/users`, {
+      const response = await axios.get(`${url}/api/users`, {
         params: {
           page: currentPage,
           search: searchTerm,
@@ -86,7 +90,7 @@ const UserManagement = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/api/team", {
+      const response = await axios.post(`${url}/api/team`, {
         name: "New Team", // Replace with actual team name input
         userIds: selectedUsers.map((user) => user._id),
       });

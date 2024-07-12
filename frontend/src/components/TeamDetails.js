@@ -6,8 +6,13 @@ import "./TeamDetails.css";
 import { useSelector, useDispatch } from "react-redux";
 import { updateTeam } from "../store/slices/UserSlice.js";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../helpers/url.js";
 
 const TeamDetails = () => {
+
+  // base url
+  const url = BASE_URL;
+
   // Create a dispatcher
   const dispatch = useDispatch();
 
@@ -33,7 +38,7 @@ const TeamDetails = () => {
   const handleRemoveTeammate = async (userId) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/team/remove/${_id}/${userId}`
+        `${url}/api/team/remove/${_id}/${userId}`
       );
       removeTeammate(userId);
     } catch (error) {
