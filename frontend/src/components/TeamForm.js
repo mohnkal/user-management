@@ -1,9 +1,9 @@
-import React, { useState, useEffect, } from "react";
+import React, { useState, useEffect, useCallback, } from "react";
 import axios from "axios";
 import UserCard from "./UserCard";
 import TeamDetails from "./TeamDetails.js";
 import "./TeamForm.css"; 
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { updateTeam } from "../store/slices/UserSlice.js";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../helpers/url.js";
@@ -20,7 +20,7 @@ const UserManagement = () => {
   const navigate = useNavigate();
 
   // Get the current team from the Redux store
-  const currentTeam = useSelector((state) => state.users.userTeam);
+  // const currentTeam = useSelector((state) => state.users.userTeam);
 
   // Handle form submission
   const [users, setUsers] = useState([]);
@@ -36,7 +36,7 @@ const UserManagement = () => {
   const [createdTeam, setCreatedTeam] = useState(null); 
 
 
-  const fetchUsers = async () => {
+  const fetchUsers = useCallback(async () => {
     try {
       const response = await axios.get(`${url}/api/users`, {
         params: {
@@ -53,11 +53,11 @@ const UserManagement = () => {
     } catch (error) {
       console.error("Error fetching users:", error);
     }
-  };
+  }, [currentPage, searchTerm, filters, url]);
 
   useEffect(() => {
     fetchUsers();
-  }, [currentPage, searchTerm, filters]);
+  }, [fetchUsers]);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);

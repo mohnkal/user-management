@@ -1,5 +1,5 @@
 // src/components/TeamDetails.js
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import UserCard from "./UserCard.js";
 import axios from "axios";
 import "./TeamDetails.css";
@@ -48,13 +48,10 @@ const TeamDetails = () => {
   };
 
   useEffect(() => {
-
-    if(currentTeam.users.length == 0){
+    if(currentTeam.users.length === 0){
       navigate("/")
     }
-    
-
-  }, [currentTeam]);
+  }, [currentTeam,navigate]);
 
   return (
     <div className="container mt-4">
